@@ -1,7 +1,6 @@
 package com.example.burgershub.network
 
 import android.content.Context
-import io.github.brunogabriel.mockpinterceptor.BuildConfig
 import io.github.brunogabriel.mockpinterceptor.MockPInterceptor
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -33,7 +32,7 @@ class ServiceProvider @Inject constructor(context: Context) {
                         .newBuilder()
                         .addHeader(
                             "X-RapidAPI-Key",
-                            BuildConfig.RAPID_API
+                            burgershub.BuildConfig.RAPID_API
                         )
                         .build()
                 )

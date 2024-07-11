@@ -9,16 +9,21 @@ plugins {
 
 android {
     namespace 'com.example.burgershub'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.burgershub"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
+        buildConfigField "String", "RAPID_API", "\"${properties.getProperty("RAPID_API")}\""
     }
 
     buildTypes {
@@ -74,6 +79,7 @@ dependencies {
 
     // Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+
     // Mockp Interceptor: https://github.com/brunogabriel/mockp-interceptor/
     debugImplementation 'com.github.brunogabriel.mockp-interceptor:library:0.0.1'
     releaseImplementation 'com.github.brunogabriel.mockp-interceptor:library-no-op:0.0.1'
